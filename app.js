@@ -57,7 +57,7 @@ const sessionConfig = {
 app.use(
   cors({
     credentials: true,
-    origin: "https://foodhub-c3fd3.web.app/",
+    origin: "https://foodhub-c3fd3.web.app",
   })
 );
 

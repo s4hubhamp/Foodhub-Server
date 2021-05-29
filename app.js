@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+//   require("dotenv").config();
+// }
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -21,6 +21,7 @@ const User = require("./models/user");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 const DBUrl = process.env.DB_URL || "mongodb://localhost:27017/foodhub";
 const secret = process.env.SECRET || "foodhubSecret!";
@@ -41,6 +42,10 @@ db.once("open", () => {
 const app = express();
 
 const sessionConfig = {
+  store: MongoStore.create({
+    mongoUrl: DBUrl || "mongodb://localhost/test-app",
+    touchAfter: 24 * 3600
+  }),
   secret,
   resave: false,
   saveUninitialized: true,

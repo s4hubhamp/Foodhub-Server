@@ -43,8 +43,8 @@ const app = express();
 
 const sessionConfig = {
   store: MongoStore.create({
-    mongoUrl: DBUrl || "mongodb://localhost/test-app",
-    touchAfter: 24 * 3600
+    mongoUrl: DBUrl || "mongodb://localhost:27017/foodhub",
+    touchAfter: 24 * 3600,
   }),
   secret,
   resave: false,
@@ -61,7 +61,6 @@ const sessionConfig = {
 
 app.use(
   cors({
-    credentials: true,
     origin: "https://foodhub-c3fd3.web.app",
   })
 );

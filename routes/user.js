@@ -5,13 +5,13 @@ const User = require("../models/user");
 const catchAsync = require("../utils/catchAsync");
 const ExpressError = require("../utils/ExpressError");
 
-router.use((req, res, next) => {
-  // if (req.user) {
-  //   return next();
-  // } else {
-  //   res.status(403).send("FORBIDDEN");
-  // }
-});
+// router.use((req, res, next) => {
+//   if (req.user) {
+//     return next();
+//   } else {
+//     res.status(403).send("FORBIDDEN");
+//   }
+// });
 
 router.post(
   "/:id/updatecart",

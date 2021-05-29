@@ -59,12 +59,7 @@ const sessionConfig = {
 
 // middlewares
 
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://foodhub-c3fd3.web.app",
-  })
-);
+app.use(cors());
 
 app.use(function (req, res, next) {
   //Enabling CORS

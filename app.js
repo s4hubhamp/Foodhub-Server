@@ -42,11 +42,11 @@ db.once("open", () => {
 const app = express();
 
 const sessionConfig = {
-  store: MongoStore.create({
-    mongoUrl: DBUrl || "mongodb://localhost:27017/foodhub",
-    touchAfter: 24 * 3600,
-  }),
-  Proxy: true,
+  // store: MongoStore.create({
+  //   mongoUrl: DBUrl || "mongodb://localhost:27017/foodhub",
+  //   touchAfter: 24 * 3600,
+  // }),
+  // Proxy: true,
   secret,
   resave: false,
   saveUninitialized: true,

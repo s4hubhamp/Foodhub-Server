@@ -47,10 +47,10 @@ const sessionConfig = {
     touchAfter: 24 * 3600,
   }),
   secret,
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: {
-    secure: false,
+    secure: true,
     httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 2,
     maxAge: 1000 * 60 * 60 * 24 * 2,
@@ -83,6 +83,7 @@ app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 
 app.get("/start", async (req, res) => {
+  console.dir(req.user);
   if (req.user) {
     res.send(req.user);
   } else {

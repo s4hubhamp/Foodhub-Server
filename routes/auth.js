@@ -18,14 +18,11 @@ router.post(
       }
     });
 
-    console.dir(req.user);
-
     res.send(registeredUser);
   })
 );
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.dir(req.user);
   res.send(req.user);
 });
 

@@ -46,13 +46,13 @@ const sessionConfig = {
     mongoUrl: DBUrl || "mongodb://localhost:27017/foodhub",
     touchAfter: 24 * 3600,
   }),
+  Proxy: true,
   secret,
-  resave: true,
+  resave: false,
   saveUninitialized: true,
   cookie: {
-    sameSite: "none",
-    secure: true,
-    httpOnly: false,
+    secure: false,
+    httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 2,
     maxAge: 1000 * 60 * 60 * 24 * 2,
   },
@@ -60,10 +60,12 @@ const sessionConfig = {
 
 // middlewares
 
+// origin: "https://foodhub-c3fd3.web.app",
+
 app.use(
   cors({
     credentials: true,
-    origin: "https://foodhub-c3fd3.web.app",
+    origin: "http://localhost:4200",
   })
 );
 
@@ -84,7 +86,6 @@ app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 
 app.get("/start", async (req, res) => {
-  console.dir(req.user);
   if (req.user) {
     res.send(req.user);
   } else {
